@@ -1,0 +1,21 @@
+T=2*pi;
+W=(2*pi)/T
+f1=-1;
+f2=1;
+k=2;
+syms x
+n=-k:k
+Cn=(int(f1.*exp(-i*n*W*x),x,-pi,0)+...
+    int(f2.*exp(-i*n*W*x),x,0,pi))/T
+CFS1=sum(Cn.*exp(i*n*W*x));
+CFS1=simplify(CFS1);
+x=linspace(-pi,5*pi,500);
+y=eval(CFS1);
+plot(x,y,'b')
+hold on
+f=@(x)-1.*(-pi<x)&&(x<0) +1.*(0<=x)&&(x<=pi)
+x1=linspace(-pi,pi,500);
+y2=f(x1);
+ry2=repmat(y2,1,3);
+rx1=linspace(-pi,5*pi,length(ry2))
+plot(rx1,ry2,'*')
