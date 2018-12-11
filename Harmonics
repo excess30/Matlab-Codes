@@ -1,0 +1,18 @@
+function [] = Harmonics1(x,y,t,h)
+T=2*pi;
+W=(2*pi)/T;
+a0=2*mean;
+HS=(a0/2);
+syms t
+for i=1:n
+    a(i)=2*mean(y.*cos*(i*W*x));
+    b(i)=2*mean(y.*sin*(i*W*x));
+    HS=HS+a(i)*cos(i*W*t)+b(i)*sin(i*W*t);
+end
+HS=vpa(HS,4);
+disp(HS)
+plot(x,y,'*')
+hold on
+t=linspace(x(1),x(end),1000);
+y1=eval(HS)
+plot(t,y1,'b')
